@@ -1,0 +1,82 @@
+<div class="container" [formGroup]="filterForm">
+   <div class="col-md-12 " *ngIf="!viewDetail">
+     <div class="accordion " id="accordionExample">
+       <div class="card ">
+         <div class="card-header text-center" id="headingOne">
+             <h2> Collected works of Mahatma Gandhi </h2>
+             <p> The collection includes Gandhi's writings, including letters, essays and personal notes and interviews.
+             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+               more
+             </button></p>
+         </div>
+         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+           <div class="card-body">
+              <p>
+The Collected Works of Mahatma Gandhi took roughly 40 years to be compiled.It covers a period from 1884 to 1948 in a chronological order, as they cover almost 60 years of Gandhiji's intensively active public life. Objective of the series is to reproduce Gandhiji's actual words as far as possible, as per the official site of the series by the Publications Division. This work is available as 98 pdf documents. </p>
+<p>
+All the volumes have been parsed, tagged and are presented here in easy to search format. There is no change to the original articles. They are as they are published in the pdf. </p>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+   <div class="col-md-12 " *ngIf="!viewDetail">
+     <div class="accordion " id="accordionExample">
+       <div class="card ">
+         <div class="card-header" id="headingtwo">
+           <h5 class="mb-0">
+             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsetwo" aria-expanded="true" aria-controls="collapsetwo"> Filter</button>
+	   </h5>
+         </div>
+         <div id="collapsetwo" class="collapse show" aria-labelledby="headingtwo" data-parent="#accordionExample">
+           <div class="card-body">
+           <div class="row">
+	   <div class="col-md-6">
+              <input formControlName="search" class="form-control" placeholder="Search by article name, description">
+	   </div>
+	   <div class="col-md-3">
+             <input  formControlName="limit" class="form-control" placeholder="results per page">
+	   </div>
+           <div class="col-md-3">
+              <select formControlName="ordering" class="form-control">
+                 <option value="null" selected>Sort by?</option>
+                 <option value="posted">Oldest First</option>
+                 <option value="-posted">Newest First</option>
+              </select>
+           </div>
+      </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <div class="col-md-12" *ngIf="!viewDetail">
+
+      <div *ngIf="dataLoaded | async" class="col-md-12">
+         <app-paginator [page]="page | async" (pageChange)="onPageChanged($event)"></app-paginator>
+                <div id="accordion">
+                  <div class="card" *ngFor="let article of (page | async)?.results;let i=index">
+                    <div class="card-header" [attr.id]="i">
+                    <div class="row">
+                       <div class="col-md-10">
+                          <span class="title">{{article.title}}</span><span class="date"><i>{{article.posted | date}}</i></span>
+                       </div>
+                       <div class="col-md-2">
+			       <button class="btn btn-success btn-just-icon btn-sm" data-toggle="collapse" [attr.data-target]="'#collapse'+i" aria-expanded="true" [attr.aria-controls]="'collapse'+i"><i class="material-icons">View</i></button>
+                       </div>
+                    </div>
+                    </div>
+                
+                    <div [attr.id]="'collapse'+i" class="collapse" [attr.aria-labelledby]="i" data-parent="#accordion">
+                      <div class="card-body">
+                        <p [innerHTML]="article.content"></p>
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+      </div>
+                
+   </div>
+
+</div>

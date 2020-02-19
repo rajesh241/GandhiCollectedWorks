@@ -1,0 +1,10 @@
+<div class="container" *ngIf="page">
+  <span>
+	  {{ page.count }} articles
+  </span>
+  <button (click)="pageChange.emit(page.previous)" [disabled]="!page.previous">&lsaquo;</button>
+  <span>
+	  Displaying  Page {{ page.page_no }} of {{ page.total_pages }}
+  </span>
+  <button (click)="pageChange.emit(page.next)" [disabled]="!page.next">&rsaquo;</button>
+</div>

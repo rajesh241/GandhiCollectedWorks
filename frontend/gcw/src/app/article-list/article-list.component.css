@@ -1,0 +1,18 @@
+.title {
+  font-size: 1rem;
+  color: #555555;
+  font-weight:bold;
+}
+.date {
+    padding-left: 10px;
+    color: #8f8f8f;
+    font-size: 0.8125rem;
+}
+.body {
+  overflow-y:auto;
+
+}
+.h2{
+  text-align: center;
+
+}
