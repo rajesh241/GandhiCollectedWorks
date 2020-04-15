@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "gcw": {
@@ -24,15 +24,14 @@
               "src/assets"
             ],
             "styles": [
-	      "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": [
-	     "node_modules/jquery/dist/jquery.js",
-	     "node_modules/bootstrap/dist/js/bootstrap.min.js",
-	     "src/assets/js/custom.js",
-	         
-	    ]
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/js/custom.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -125,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "gcw"
+    }
+  },
+  "defaultProject": "gcw",
+  "cli": {
+    "analytics": "99c0fb79-6bc3-4be2-bef0-3aa62e992c36"
+  }
 }

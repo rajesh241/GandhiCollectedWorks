@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiURL : "http://demo.libtech.in:8001",
+  apiURL : "https://gandhib.libtech.in",
 };
 
 /*

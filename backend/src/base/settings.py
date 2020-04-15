@@ -27,7 +27,7 @@ SECRET_KEY = BASE_CONFIG.get('secret_key')
 DEBUG = True
 
 
-ALLOWED_HOSTS = ["demo.libtech.in","ttb.libtech.in","6f1bfde6.ngrok.io"]
+ALLOWED_HOSTS = ["gandhib.libtech.in","aapvolb.libtech.in","demo.libtech.in","ttb.libtech.in","6f1bfde6.ngrok.io"]
 
 
 # Application definition
@@ -64,6 +64,8 @@ MIDDLEWARE = [
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:4200',
+    'http://gandhi.libtech.in',
+    'https://gandhi.libtech.in',
     'http://demo.libtech.in:8002',
     'http://b.libtech.in:9001',
     'http://b.libtech.in:8888',
