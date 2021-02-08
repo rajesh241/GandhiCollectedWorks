@@ -42,6 +42,29 @@ def main():
     """Main Module of this program"""
     args = args_fetch()
     logger = logger_fetch(args.get('log_level'))
+    if args['import']:
+        df = pd.read_csv("all_articles.csv")
+        logger.info(df.head())
+        for index, row in df.iterrows():
+            title = row.get("title", None)
+            content = row.get("content", None)
+            footnote = row.get("footnote", None)
+            volume_number = row.get("volume_number", None)
+            chapter_number = row.get("chapter_number", None)
+            posted = row.get("posted", None)
+            posted_obj = get_date_object(posted, "%Y-%m-%d")
+            logger.info(posted)
+            obj = Article.objects.filter(chapter_number=chapter_number,
+                                         volume_number=volume_number).first()
+            if obj is None:
+                obj = Article.objects.create(chapter_number=chapter_number,
+                                             volume_number=volume_number,
+                                             title=title)
+            obj.content = content
+            obj.footnote = footnote
+            obj.posted = posted_obj
+            obj.save()
+        exit(0)
     if args['test']:
         csv_array = []
         column_headers = ["title", "content", "footnote", "volume_number",

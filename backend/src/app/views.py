@@ -51,7 +51,7 @@ class ArticleAPIView(HttpResponseMixin,
     serializer_class = ArticleSerializer
     passed_id = None
     input_id = None
-    search_fields = ('title',)
+    search_fields = ('title', 'content')
     ordering_fields = ('title', 'id', 'volume_no', 'chapter_no',
                        "posted")
     filterset_class = ArticleFilter
