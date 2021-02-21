@@ -11,11 +11,15 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import json
 from datetime import timedelta
-from base.custom_settings import SQL_CONFIG, EMAIL_CONFIG, BASE_CONFIG
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+with open(os.path.join(os.path.dirname(BASE_DIR), 'web_config.json')) as base_config_file:
+    BASE_CONFIG = json.load(base_config_file)
+
+SQL_CONFIG = os.path.join(os.path.dirname(BASE_DIR), 'mysql.cnf')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -27,7 +31,7 @@ SECRET_KEY = BASE_CONFIG.get('secret_key')
 DEBUG = True
 
 
-ALLOWED_HOSTS = ["backend.worksofgandhi.in","worksofgandhi.in","demo.libtech.in","ttb.libtech.in","6f1bfde6.ngrok.io"]
+ALLOWED_HOSTS = ["backend.worksofgandhi.in","128.199.20.172","worksofgandhi.in","demo.libtech.in","ttb.libtech.in","6f1bfde6.ngrok.io"]
 
 
 # Application definition
@@ -163,8 +167,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = EMAIL_CONFIG.get('username')
-EMAIL_HOST_PASSWORD = EMAIL_CONFIG.get('password')
+EMAIL_HOST_USER = BASE_CONFIG.get('email_username')
+EMAIL_HOST_PASSWORD = BASE_CONFIG.get('email_password')
 
 SIMPLE_JWT = {
         'ACCESS_TOKEN_LIFETIME': timedelta(minutes=120),

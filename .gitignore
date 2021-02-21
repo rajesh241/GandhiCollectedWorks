@@ -154,3 +154,5 @@ baseline.json
 
 ##Custom config
 libtech.ts
+mysql.cnf
+web_config.json
