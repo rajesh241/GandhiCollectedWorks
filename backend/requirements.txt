@@ -35,5 +35,5 @@ social-auth-core==3.2.0
 soupsieve==1.9.5
 sqlparse==0.3.0
 typed-ast==1.4.0
-urllib3==1.25.7
+urllib3==1.25.8
 wrapt==1.11.2
